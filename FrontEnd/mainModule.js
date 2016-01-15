@@ -1,6 +1,6 @@
 
 
-var main_module = angular.module('main_module',['ngRoute', 'ngResource']);
+var main_module = angular.module('main_module',['ngRoute','ngResource']);
 
 
 main_module.config(function($routeProvider){
@@ -8,14 +8,14 @@ main_module.config(function($routeProvider){
     $routeProvider.when('/',{
         // Triggeröityy kun url latautuu eli tullaan '/' kohtaan
         templateUrl:'partial_mainView.html', //toteuttaa tietyn osan dokumenttia (siksi partial)
-        //controller:'controllerMain'
-        //factory:'loginFactory'
+        controller:'groupDataController',
+        factory:'groupDataFactory'
     
     }).when('/list',{
         
         templateUrl:'partial_productView.html', //toteuttaa tietyn osan dokumenttia (siksi partial)
         controller:'controllerLogin'
-    }
+    });
 
                         
                        /*).when('/list',{
@@ -50,6 +50,8 @@ main_module.config(function($routeProvider){
         resolve:{loginRequired: loginRequired}
         
     }); */
+    
+    //.otherwise({redirectTo:'/'});
     
     
 });

@@ -1,0 +1,22 @@
+#mainView {background: #ffffff;}
+
+#mainSelections {
+	/*position: absolute;
+    left: 50px;*/
+    top: 170px;	
+	/*width: 800px;*/
+	/*font-family: arial;*/
+	font-size: 16px;
+	color: #2F4F4F;
+}
+
+#productCategories {
+	/*position: absolute;
+    left: 60px;*/
+    top: 470px;	
+	width: 200px;
+	/*font-family: arial;
+	font-weight: bold;*/
+	font-size: 14px;
+	color: #2F4F4F;
+}

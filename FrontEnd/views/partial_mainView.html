@@ -1,32 +1,39 @@
 <!DOCTYPE html>
 
 <html ng-app='main_module'>
-    <!--<head>
+    
+    <head>
         <meta charset="utf-8">
-        <title>Puoti Front End</title>
-        <link href="/FrontEnd/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-        <link href="/FrontEnd/css/bootstrap-theme.min.css" type="text/css" rel="stylesheet">
-        <link href="/FrontEnd/css/styles.css" type="text/css" rel="stylesheet">
-    </head>-->
-    <!--
-    <body> -->
-        <!--This is a placeholder for our views in this app-->
-        <!--
-        <div ng-view></div>
-        <script src="/FrontEnd/lib/jquery-2.1.4.min.js"></script>
-        <script src="/FrontEnd/lib/angular.min.js"></script>
-        <script src="/FrontEnd/lib/angular-route.min.js"></script>        
-        <script src="/FrontEnd/lib/angular-resource.min.js"></script> 
-        <script src="/FrontEnd/module/mainModule.js"></script> 
-        <script src="/FrontEnd/controllers/loginController.js"></script>   
-        <script src="/FrontEnd/controllers/friendDataController.js"></script> 
-        <script src="/FrontEnd/controllers/friendNewController.js"></script>                         
-        <script src="/FrontEnd/controllers/friendModifyController.js"></script>                 
-        <script src="/FrontEnd/controllers/friendDeleteController.js"></script>                         
-        <script src="/FrontEnd/factories/loginFactory.js"></script>   
-        <script src="/FrontEnd/factories/friendDataFactory.js"></script>         -->
-
-        <!--Huom! Käytetään angular-kirjastoa suoraan, ei jquery-kirjastoa. AngularJs ei ymmärrä täysin jquery-metodeja
-        AngularJs käyttää ite tarvitessaan jquery-kirjastoa-->
-    <!--</body> -->
+        <title>Luontaistuotteiden puoti</title>
+    </head>
+    
+    <body id=mainView> 
+        <form>
+            
+            <h3>Luontaistuotteiden puoti</h3>
+            
+            <table class="table table-bordered" id=mainSelections>
+                <thead>
+                    <tr>
+                        <th>Etusivu</th>
+                        <th>Ostokset</th>
+                        <th>Maksaminen</th>
+                        <th>Käyttöohje</th>
+                        <th>Kirjautuminen</th>
+                    </tr>
+                </thead>
+            
+            </table>
+            <p><h4>Tuoteryhmät</h4></p>
+            
+            <table class="table table-bordered" id=groups>
+                <tbody>
+                    <tr ng-repeat='productGroup in groupData'>
+                        <td>{{productGroup.gName}}</td>
+                    </tr>
+                </tbody>
+            
+            </table>
+        </form>
+    </body>
 </html>
