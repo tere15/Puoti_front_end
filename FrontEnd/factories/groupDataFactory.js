@@ -1,4 +1,4 @@
-main_module.factory('groupDataFactory', function($resource){
+main_module.factory('groupDataFactory', function($resource,$http){
         
     var factory = {};
     factory.selected_id = null;
@@ -6,32 +6,35 @@ main_module.factory('groupDataFactory', function($resource){
     
                             
     factory.groupsArray = [];
+    factory.productsArray = [];
                     
-    factory.getGroupData = function(){
+    /*factory.getGroupData = function(){
         
         var resource = $resource('/groups',{},{'get':{method:'GET'}});
          
          console.log("groupDataFactory resource: " + resource);
+        
         return resource.query().$promise;
-    }
+    }*/
     
    
     
     //In this array we cache the friends information,
     //so that once stored in array we wont make any further request
     
-    /*factory.getGroupData = function(callbackFunc){
-        
+    factory.getGroupData = function(callbackFunc){
+        console.log("factory_1: getGroupData ");
         if(factory.groupsArray.length === 0){
             //Set your own headers in request like this
-            //$http.defaults.headers.common['x-access-token'] = sessionStorage['token'];
+            console.log("factory_2: getGroupData ");
+            $http.defaults.headers.common['x-access-token'] = sessionStorage['token'];
             
             var resource = $resource('/groups',{},{'get':{method:'GET'}});
             
             resource.query().$promise.then(function(data){
                 
               factory.groupsArray = data;
-              console.log("factory: getGroupData " + data );
+           
               callbackFunc(factory.groupsArray);    
                 
             },function(error){
@@ -44,7 +47,34 @@ main_module.factory('groupDataFactory', function($resource){
             
             callbackFunc(factory.groupsArray);
         }
-    }*/
+    }
+    
+      factory.getProductData = function(callbackFunc){
+
+        if(factory.productsArray.length === 0){
+            //Set your own headers in request like this
+
+            $http.defaults.headers.common['x-access-token'] = sessionStorage['token'];
+
+            var resource = $resource('/update',{},{'get':{method:'GET'}});
+            console.log("factory_3 resource: getProductData " + resource);
+            resource.query().$promise.then(function(data){
+              console.log("factory_4: getProductData " + data);
+              factory.productsArray = data;
+
+              callbackFunc(factory.productsArray);    
+
+            },function(error){
+
+                factory.productsArray = [];
+                callbackFunc(factory.productsArray);
+            });
+        }
+        else{
+
+            callbackFunc(factory.productsArray);
+        }
+    }
 
    //Updates the data to back end
     /*factory.updateData = function(data){

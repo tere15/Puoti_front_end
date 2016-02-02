@@ -6,6 +6,7 @@ var bodyParser = require("body-parser");
 var database = require('./modules/database');
 var queries = require('./modules/queries');
 var group = require('./modules/group');
+var product = require('./modules/product');
 
 var session = require('express-session');
 var app = express();    // luodaan serveri
@@ -21,6 +22,7 @@ app.use('/FrontEnd/lib',express.static(path.join(__dirname, '../FrontEnd/lib')))
 app.use('/FrontEnd',express.static(path.join(__dirname, '../FrontEnd')));
 app.use('/FrontEnd/controllers',express.static(path.join(__dirname, '../FrontEnd/controllers')));
 app.use('/FrontEnd/factories',express.static(path.join(__dirname, '../FrontEnd/factories')));
+app.use('/FrontEnd/factories',express.static(path.join(__dirname, '../FrontEnd/fonts')));
 
 
 app.use(function(req,res,next){                     
@@ -36,12 +38,7 @@ app.use(function(req,res,next){
 });
 
 app.use('/groups', group);       //tästä triggeröityy group.js (käsiteltävä router) (/groups pyyhitään tässä pois)??
-
-
-
-
-
-
+app.use('/update', product);
 
 //=====================ROUTERS=====================//
 

@@ -11,10 +11,18 @@ main_module.config(function($routeProvider){
         controller:'groupDataController',
         factory:'groupDataFactory'
     
-    }).when('/list',{
+        /*}).when('/groups',{
         
-        templateUrl:'partial_productView.html', //toteuttaa tietyn osan dokumenttia (siksi partial)
-        controller:'controllerLogin'
+        templateUrl:'partial_mainView.html', //toteuttaa tietyn osan dokumenttia (siksi partial)
+        controller:'groupDataController',
+        factory:'groupDataFactory'
+    });*/
+    
+    }).when('/update',{
+        
+        templateUrl:'partial_updateView.html', 
+        controller:'productDataController',
+        factory:'groupDataFactory'
     });
 
                         
