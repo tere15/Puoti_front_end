@@ -22,7 +22,7 @@ main_module.factory('groupDataFactory', function($resource,$http){
     //In this array we cache the friends information,
     //so that once stored in array we wont make any further request
     
-    factory.getGroupData = function(callbackFunc){
+    factory.getGroupData = function(callbackFunc_group){
         console.log("factory_1: getGroupData ");
         if(factory.groupsArray.length === 0){
             //Set your own headers in request like this
@@ -35,12 +35,12 @@ main_module.factory('groupDataFactory', function($resource,$http){
                 
               factory.groupsArray = data;
            
-              callbackFunc(factory.groupsArray);    
+              callbackFunc_group(factory.groupsArray);    
                 
             },function(error){
                 
                 factory.groupsArray = [];
-                callbackFunc(factory.groupsArray);
+                callbackFunc_group(factory.groupsArray);
             });
         }
         else{
@@ -49,8 +49,8 @@ main_module.factory('groupDataFactory', function($resource,$http){
         }
     }
     
-      factory.getProductData = function(callbackFunc){
-
+      factory.getProductData = function(callbackFunc_product){
+            console.log("getProductData, factory ");
         if(factory.productsArray.length === 0){
             //Set your own headers in request like this
 
@@ -62,12 +62,12 @@ main_module.factory('groupDataFactory', function($resource,$http){
               console.log("factory_4: getProductData " + data);
               factory.productsArray = data;
 
-              callbackFunc(factory.productsArray);    
+              callbackFunc_product(factory.productsArray);    
 
             },function(error){
 
                 factory.productsArray = [];
-                callbackFunc(factory.productsArray);
+                callbackFunc_product(factory.productsArray);
             });
         }
         else{

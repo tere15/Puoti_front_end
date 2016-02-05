@@ -6,9 +6,9 @@ main_module.controller('productDataController',function($scope,groupDataFactory,
     
     
     
-    function dataCallback(dataArray){
+    function dataCallback(dataArray_2){
         
-        $scope.productData = dataArray;
+        $scope.productData = dataArray_2;
     }
                        
 });

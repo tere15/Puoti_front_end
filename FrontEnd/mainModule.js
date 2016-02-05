@@ -21,7 +21,7 @@ main_module.config(function($routeProvider){
     }).when('/update',{
         
         templateUrl:'partial_updateView.html', 
-        controller:'productDataController',
+        controller:'groupDataController',
         factory:'groupDataFactory'
     });
 

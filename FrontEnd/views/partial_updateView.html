@@ -3,7 +3,7 @@
 <div class='table_container'>
     <!-- tähän linkit muihin näkymiin -->
         
-        <div style="background-color:blue;" class="col-sm-6">
+        <div style="background-color:orange;" class="col-sm-6">
            <!--col-md-2-->
     
             <h1>The table of products</h1>
@@ -19,16 +19,16 @@
             <table class='table table-hover' ng-click = 'rowSelected()'>
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Prize</th>
-                        <th>Count</th>
+                        <th>Nimi</th>
+                        <th>Hinta</th>
+                        <th>Määrä</th>
                     </tr>
 
                 </thead>
                 <tbody>
                     <tr ng-repeat='product in productData'> 
                     <!-- person muuttuja voi olla mikä vaan, friendData määritelty friendDataController.js komponentissa. Taulukko alkaa 0:sta-->
-                        <td>{{product.gName}}</td>
+                        <td>{{product.pName}}</td>
                         <td>{{product.prize}}</td>            
                         <td>{{product.stockCount}}</td>            
                     </tr>

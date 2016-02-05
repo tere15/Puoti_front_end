@@ -27,9 +27,10 @@ var productGroup = mongoose.model('productGroup',{
 }, 'productGroup');
 
 var product = mongoose.model('product',{
-    gName: String,
+    pName: String,
     prize: Number,
     stockCount: Number,
+    description: String,
     gId: String
 }, 'product');
 

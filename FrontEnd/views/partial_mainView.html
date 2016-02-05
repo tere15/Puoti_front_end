@@ -21,18 +21,58 @@
                         <th>Kirjautuminen</th>
                     </tr>
                 </thead>
-            
+
             </table>
-            <p><h4>Tuoteryhmät</h4></p>
-            
-            <table class="table table-bordered" id=groups>
-                <tbody>
-                    <tr ng-repeat='productGroup in groupData'>
-                        <td>{{productGroup.gName}}</td>
-                    </tr>
-                </tbody>
-            
-            </table>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class='table_container'>            
+                            <p id=header>Tuoteryhmät</p>
+
+                            <table class="table table-hover" id=groups> <!--table-bordered-->
+                                <tbody>
+                                    <tr ng-repeat='productGroup in groupData' ng-click='rowClicked(productGroup._id)'>
+                                        <td>{{productGroup.gName}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                  <!--  <script>
+                       var i = 1;
+                        if(i==1){
+                            console.log("hep 1");
+                            } else{
+                                console.log("hep");
+                            };
+                    
+                    
+                    </script>-->
+                  
+                    <div class="col-sm-6">
+                        <div class='table_container'>            
+                            
+                            <table class='table table-hover' ng-click = 'rowSelected()'>
+                                <thead>
+                                    <tr>
+                                        <th>Nimi</th>
+                                        <th>Hinta</th>
+                                        <th>Kuvaus</th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat='product in productData'>
+                                       <td>{{product.pName}}</td>
+                                        <td>{{product.prize}}</td>            
+                                        <td>{{product.description}}</td>  
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>                
+                </div>
+            </div>                
         </form>
     </body>
 </html>
