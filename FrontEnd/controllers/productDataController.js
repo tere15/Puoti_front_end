@@ -1,14 +1,18 @@
 main_module.controller('productDataController',function($scope,groupDataFactory,$location){
                        
-  console.log('productDataController loaded');
+  /*console.log('productDataController loaded');
     
-    groupDataFactory.getProductData(dataCallback); 
+    groupDataFactory.getProductData(dataCallback);
     
     
+    groupDataFactory.selected_id;
     
-    function dataCallback(dataArray_2){
+    
+    function dataCallback(productArray){
         
-        $scope.productData = dataArray_2;
-    }
+        console.log('productDataController, groupId:' + groupDataFactory.selected_id);
+    
+        $scope.productData = productArray;
+    }*/
                        
 });

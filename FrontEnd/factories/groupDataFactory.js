@@ -7,6 +7,7 @@ main_module.factory('groupDataFactory', function($resource,$http){
                             
     factory.groupsArray = [];
     factory.productsArray = [];
+    factory.productsByGroupArray = [];
                     
     /*factory.getGroupData = function(){
         
@@ -19,7 +20,7 @@ main_module.factory('groupDataFactory', function($resource,$http){
     
    
     
-    //In this array we cache the friends information,
+    //In this array we cache the groups information,
     //so that once stored in array we wont make any further request
     
     factory.getGroupData = function(callbackFunc_group){
@@ -90,16 +91,27 @@ main_module.factory('groupDataFactory', function($resource,$http){
       *page. When it finds the correct one from the array, it returns
       *that object.
       */
-    /*factory.getSelectedFriend = function(){
+   factory.getSelectedProducts = function(callbackFunc_selectedProducts){
         
-        for(var i = 0; i < factory.friendsArray.length; i++){
+        var j = 0;
+        factory.productsByGroupArray=[];
+        
+       for(var i = 0; i < factory.productsArray.length; i++){
             
-            if(factory.friendsArray[i]._id === factory.selected_id){
+            
+            if(factory.productsArray[i].gId == factory.selected_id){
+                console.log("hep 1");
                 
-                return factory.friendsArray[i];
-            }
+                factory.productsByGroupArray[j] = factory.productsArray[i];
+                j++;
+            } 
+            console.log("hep 2 & length: " + factory.productsArray.length);
+            
         }
-    }*/
+        console.log("hep 3");
+       //return factory.productsByGroupArray;
+        callbackFunc_selectedProducts(factory.productsByGroupArray);
+    }
     
     //Adds the data to back end
     /*factory.insertData = function(data){

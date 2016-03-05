@@ -1,78 +1,54 @@
-<!DOCTYPE html>
+<hr id="blueLine">
+ <!--<hr id="favourites">-->
+<p>
+<div style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: left">
+  <span style="font-size: 18px; background-color: white; padding: 0 10px;">
+    OUR FAVOURITES <!--Padding is optional-->
+  </span>
+</div>
+</p>
+<!---->
+<nav-bar navbar-data='navbarData'></nav-bar>
 
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Luontaistuotteiden puoti</title>
-    </head>
+<div class="container">
+
     
-    <body id=mainView> 
-        <form>
-            
-            <h3>Luontaistuotteiden puoti</h3>
-            
-            <table class="table table-bordered" id=mainSelections>
-                <thead>
-                    <tr>
-                        <th>Etusivu</th>
-                        <th>Ostokset</th>
-                        <th>Maksaminen</th>
-                        <th>Käyttöohje</th>
-                        <th>Kirjautuminen</th>
-                    </tr>
-                </thead>
+    
+    <div class="row">
+        <div class="col-sm-6">
+            <div class='table_container'>            
+                <p id=header>Tuoteryhmät</p>
 
-            </table>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class='table_container'>            
-                            <p id=header>Tuoteryhmät</p>
+                <table class="table table-hover" id=groups> <!--table-bordered-->
+                    <tbody>
+                        <tr ng-repeat='productGroup in groupData' ng-click='rowClicked(productGroup._id)'>
+                            <td>{{productGroup.gName}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class='table_container'>            
 
-                            <table class="table table-hover" id=groups> <!--table-bordered-->
-                                <tbody>
-                                    <tr ng-repeat='productGroup in groupData' ng-click='rowClicked(productGroup._id)'>
-                                        <td>{{productGroup.gName}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                  <!--  <script>
-                       var i = 1;
-                        if(i==1){
-                            console.log("hep 1");
-                            } else{
-                                console.log("hep");
-                            };
-                    
-                    
-                    </script>-->
-                  
-                    <div class="col-sm-6">
-                        <div class='table_container'>            
-                            
-                            <table class='table table-hover' ng-click = 'rowSelected()'>
-                                <thead>
-                                    <tr>
-                                        <th>Nimi</th>
-                                        <th>Hinta</th>
-                                        <th>Kuvaus</th>
-                                    </tr>
+                <table class='table table-hover' ng-click = 'rowSelected()'>
+                    <thead>
+                        <tr>
+                            <th>Nimi</th>
+                            <th>Hinta</th>
+                            <th>Kuvaus</th>
+                        </tr>
 
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat='product in productData'>
-                                       <td>{{product.pName}}</td>
-                                        <td>{{product.prize}}</td>            
-                                        <td>{{product.description}}</td>  
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>                
-                </div>
-            </div>                
-        </form>
-    </body>
-</html>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat='product in productByGroupData'>
+                           <td>{{product.pName}}</td>
+                            <td>{{product.prize}}</td>            
+                            <td>{{product.description}}</td>  
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>                
+    </div>
+</div>                

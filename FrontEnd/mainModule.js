@@ -1,6 +1,6 @@
 
 
-var main_module = angular.module('main_module',['ngRoute','ngResource']);
+var main_module = angular.module('main_module',['ngRoute','ngResource','flash']);
 
 
 main_module.config(function($routeProvider){
@@ -23,6 +23,11 @@ main_module.config(function($routeProvider){
         templateUrl:'partial_updateView.html', 
         controller:'groupDataController',
         factory:'groupDataFactory'
+        
+    }).when('/login',{
+        
+        templateUrl:'login.html' 
+        
     });
 
                         

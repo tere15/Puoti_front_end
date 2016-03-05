@@ -38,3 +38,18 @@ exports.getAllProducts = function(req,res){
     
     });
 }
+
+/*exports.getProductsByGroup = function(req,res){
+        console.log("queries getProductsByGroup " + req + " " + res);
+   db.product.find(function(err,data){
+    console.log("queries getProductsByGroup, data " + data);
+       if(err){
+            console.log(err.message);
+            res.send("Error in database!");
+        }
+        else{
+            console.log("queries.js getProductsByGroup &" + data);
+            res.send(data);
+        }
+    
+    });*/
