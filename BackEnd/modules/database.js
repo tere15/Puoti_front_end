@@ -34,6 +34,23 @@ var product = mongoose.model('product',{
     gId: String
 }, 'product');
 
+var customer = mongoose.model('customer',{
+    forename: String,
+    surname: String,
+    street: String,
+    postalcode: String,
+    city: String,
+    email: String,
+    phone: String
+}, 'customer');
+
+var login = mongoose.model('login',{
+    cId: String,
+    userw: String,
+    passw: String,
+    role: String
+
+},'login');
 //gId:[{type:mongoose.Schema.Types.ObjectId,ref:'productGroup'}]
 
 //var name = productGroup.gName;

@@ -5,14 +5,21 @@ var jwt = require('jsonwebtoken');
 var bodyParser = require("body-parser");
 var database = require('./modules/database');
 var queries = require('./modules/queries');
+var registry = require('./modules/registry');
+var user = require('./modules/user');
 var group = require('./modules/group');
 var product = require('./modules/product');
+var mongo_module = require('./modules/mongo_module');
 
 
 var session = require('express-session');
 var app = express();    // luodaan serveri
 
+/*app.set('port', process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3000);
+app.set('ip', process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1");**/
+
 //=====================MIDDLEWARES=====================//
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
@@ -26,7 +33,13 @@ app.use('/FrontEnd/factories',express.static(path.join(__dirname, '../FrontEnd/f
 app.use('/FrontEnd/factories',express.static(path.join(__dirname, '../FrontEnd/fonts')));
 app.use('/FrontEnd/directives',express.static(path.join(__dirname, '../FrontEnd/directives')));
 
+//app.use('/users',user);
 
+app.get('/logout',function(req,res){
+    
+    req.session.destroy();
+    res.redirect('/');
+});
 
 app.use(function(req,res,next){                     
     
@@ -40,8 +53,34 @@ app.use(function(req,res,next){
     next(); // seuraavaan middlewareen
 });
 
+
+
+
 app.use('/groups', group);       //tästä triggeröityy group.js (käsiteltävä router) (/groups pyyhitään tässä pois)??
 app.use('/update', product);
+app.use('/registries', registry);
+
+
+//==============================OUR REST API MIDDLEWARES======================================//
+
+
+//This router checks if client is logged in or not
+app.get('/isLogged',function(req,res){
+    //User is logged in if session contains kayttaja attribute
+    console.log("logged info:" + req.session.kayttaja);
+    if(req.session.kayttaja){
+        res.status(200).send([{status:'Ok'}]);   
+    }
+    else{
+        
+       res.status(401).send([{status:'Unauthorized'}]);  
+    }
+});
+
+/*https.createServer(options,app).listen(app.get('port') ,app.get('ip'), function() 
+{
+    console.log("Express server started");
+});*/
 
 
 //=====================ROUTERS=====================//

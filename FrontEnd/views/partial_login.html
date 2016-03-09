@@ -1,0 +1,14 @@
+<div class='container'>
+    
+    <form class='loginForm'>
+        
+        <!--ng-model directive is the way to tarnsfer data to controller -->
+        <input class="form-control" type="text" placeholder="Käyttäjätunnus" ng-model="user"><br/>
+        <input class="form-control" type="password" placeholder="Salasana" ng-model='pass'><br/>
+        <input class="btn btn-default" type="button" value="Kirjaudu" ng-click='loginClicked()'>
+        <!--bind the data from username textfield (use the variable 'user')-->
+        <p>{{user}}</p>
+    </form>
+
+    <div class='flash-style' flash-message='2000'></div>
+</div>

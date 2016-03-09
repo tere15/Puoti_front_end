@@ -7,27 +7,34 @@ main_module.config(function($routeProvider){
     
     $routeProvider.when('/',{
         // Triggeröityy kun url latautuu eli tullaan '/' kohtaan
-        templateUrl:'partial_mainView.html', //toteuttaa tietyn osan dokumenttia (siksi partial)
-        controller:'groupDataController',
-        factory:'groupDataFactory'
+        templateUrl:'partial_main.html', //toteuttaa tietyn osan dokumenttia (siksi partial)
+        controller:'groupController',
+        factory:'groupFactory'
     
         /*}).when('/groups',{
         
-        templateUrl:'partial_mainView.html', //toteuttaa tietyn osan dokumenttia (siksi partial)
-        controller:'groupDataController',
-        factory:'groupDataFactory'
+        templateUrl:'partial_main.html', //toteuttaa tietyn osan dokumenttia (siksi partial)
+        controller:'groupController',
+        factory:'groupFactory'
     });*/
     
     }).when('/update',{
         
-        templateUrl:'partial_updateView.html', 
-        controller:'groupDataController',
-        factory:'groupDataFactory'
+        templateUrl:'partial_update.html', 
+        controller:'groupController',
+        factory:'groupFactory'
+        
+     }).when('/registries',{
+        
+        templateUrl:'partial_registry.html', 
+        controller:'registryController'
+     
         
     }).when('/login',{
         
-        templateUrl:'login.html' 
-        
+        templateUrl:'partial_login.html',
+        controller:'loginController',
+        factory:'loginFactory'
     });
 
                         

@@ -17,11 +17,11 @@
   },
   "homepage": "https://github.com/tere15/Puoti_front_end#readme",
   "dependencies": {
-    "body-parser": "^1.14.2",
-    "express": "^4.13.3",
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
     "express-session": "^1.13.0",
-    "jsonwebtoken": "^5.5.4",
-    "mongoose": "^4.3.5",
+    "jsonwebtoken": "^5.7.0",
+    "mongoose": "^4.4.6",
     "uuid": "^2.0.1"
   }
 }
