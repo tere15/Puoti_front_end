@@ -5,6 +5,12 @@ var main_module = angular.module('main_module',['ngRoute','ngResource','flash'])
 
 main_module.config(function($routeProvider){
     
+    main_module.run(function($http){
+    
+        $http.defaults.headers.common['cache-control'] = 'private, no-store, must-revalidate';
+    });
+    
+    
     $routeProvider.when('/',{
         // Triggeröityy kun url latautuu eli tullaan '/' kohtaan
         templateUrl:'partial_main.html', //toteuttaa tietyn osan dokumenttia (siksi partial)
@@ -27,7 +33,8 @@ main_module.config(function($routeProvider){
      }).when('/registries',{
         
         templateUrl:'partial_registry.html', 
-        controller:'registryController'
+        controller:'registryController',
+        factory:'registryFactory'
      
         
     }).when('/login',{

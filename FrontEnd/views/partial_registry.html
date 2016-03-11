@@ -1,3 +1,5 @@
+<nav-bar navbar-data='navbarData'></nav-bar>
+
 <div class='container'>
     
     <form class='loginForm'>
@@ -5,14 +7,14 @@
         <!--ng-model directive is the way to tarnsfer data to controller -->
         <input class="form-control" type="text" placeholder="Etunimi" ng-model="forename"><br/>
         <input class="form-control" type="text" placeholder="Sukunimi" ng-model='surname'><br/>
-        <input class="form-control" type="text" placeholder="Käyttäjätunnus" ng-model="street"><br/>
+        <input class="form-control" type="text" placeholder="Katu" ng-model="street"><br/>
         <input class="form-control" type="text" placeholder="Postinro" ng-model='postalcode'><br/>
         <input class="form-control" type="text" placeholder="Kaupunki" ng-model="city"><br/>
         <input class="form-control" type="email" placeholder="Sähköpostiosoite" ng-model='email'><br/>
         <input class="form-control" type="phone" placeholder="Puhelinnro" ng-model='phone'><br/>
         <input class="form-control" type="text" placeholder="Käyttäjätunnus" ng-model="userw"><br/>
         <input class="form-control" type="password" placeholder="Salasana" ng-model='passw'><br/>
-         <input class="btn btn-default" type="button" value="Lisää" ng-click='addClicked()'>
+         <input class="btn btn-default" type="button" value="Lisää" ng-click='addCustomer()'>
          <input class="btn btn-default" type="button" value="Muuta" ng-click='editClicked()'>
      
        

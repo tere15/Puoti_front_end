@@ -5,11 +5,12 @@ main_module.controller('registryController',function($scope,registryFactory,Flas
         urls:['#/shoppings','#/payment','#/guide','#/login','#/registries'],
         texts:['Ostokset','Maksaminen','Ohjeet','Kirjautuminen','Registeröinti']
     }   
-
+    
+    
     $scope.forename = "";
     $scope.surname = "";
     $scope.street = "";
-    $scope.postalcode = 0;
+    $scope.postalcode = "";
     $scope.city = "";
     $scope.email = "";
     $scope.phone = "";
@@ -17,48 +18,54 @@ main_module.controller('registryController',function($scope,registryFactory,Flas
     $scope.passw = "";    
 
     $scope.addCustomer = function(){
-        $('#save').attr("disabled", true);
-        
-        var temp_1 = {
+        //$('#save').attr("disabled", true);
+       console.log("hello addCustomer");
+        var temp = {
             forename:$scope.forename,
-            surname:$scope.name,
+            surname:$scope.surname,
             street:$scope.street,
             postalcode:$scope.postalcode,
             city:$scope.city,
             email:$scope.email,
-            phone:$scope.phone
-         }
-        var temp_2 = {
-            userw:$scope.userw,
-            passw:$scope.passw
+            phone:$scope.phone,
+            username:$scope.userw,
+            password:$scope.passw
         }
-        
-        if(temp_1.forename.length === 0 || temp_1.surname.length === 0 || temp_1.street.length === 0 || temp_1.postalcode.length === 0 ||
-          temp_1.city.length === 0 || temp_1.email.length === 0 || temp_1.phone.length === 0|| temp_2.userw.length === 0 || temp.passw_2.length === 0){
+        console.log("name: " + temp.forename);
+        /**if(temp_1.forename.length === 0 || temp_1.surname.length === 0 || temp_1.street.length === 0 || temp_1.postalcode.length === 0 ||
+          temp_1.city.length === 0 || temp_1.email.length === 0 || temp_1.phone.length === 0|| temp_2.userw.length === 0 || temp.passw.length === 0){
             
             alert('Need more data!');
             return;
-        }
+        }**/
         
-        customerFactory.insertCustomer(temp_1).then(function(response){
+        registryFactory.addRegistry(temp).then(function(response){
             
-            customerFactory.customersArray.push(response.data);
-            Flash.create('success', 'New customer added!', 'custom-class');
+            
+            //registryFactory.customersArray.push(response.data);
+            Flash.create('success', 'New registry added!', 'custom-class');
             $scope.forename = "";
             $scope.surname = "";
             $scope.street = "";
-            $scope.postalcode = 0;
+            $scope.postalcode = "";
             $scope.city = "";
             $scope.email = "";
             $scope.phone = "";
-               
-            $('#save').attr("disabled", false);
+            
+            //registryFactory.usersArray.push(response.data);
+            
+            $scope.userw = "";
+            $scope.passw = "";
+            //Flash.create('success', 'New user added!', 'custom-class');   
+            //$('#save').attr("disabled", false);
         },function(error){
-            $('#save').attr("disabled", false);
+            //$('#save').attr("disabled", false);
             Flash.create('warning', 'Failed to add registry!', 'custom-class');
         });
         
-        customerFactory.insertLogin(temp_2)(function(response){
+        
+        
+        /**customerFactory.insertLogin(temp_2)(function(response){
             
             customerFactory.customersArray.push(response.data);
             Flash.create('success', 'New login added!', 'custom-class');
@@ -69,6 +76,6 @@ main_module.controller('registryController',function($scope,registryFactory,Flas
         },function(error){
             $('#save').attr("disabled", false);
             Flash.create('warning', 'Failed to add login!', 'custom-class');
-        });
+        });**/
     }
 });

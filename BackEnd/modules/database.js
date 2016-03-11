@@ -44,13 +44,14 @@ var customer = mongoose.model('customer',{
     phone: String
 }, 'customer');
 
-var login = mongoose.model('login',{
-    cId: String,
-    userw: String,
-    passw: String,
-    role: String
+var user = mongoose.model('user',{
+    
+    username: {type:String,unique:true},
+    password: String,
+    role: String,
+    cid:{type:mongoose.Schema.Types.ObjectId,ref:'customer'}
 
-},'login');
+},'user');
 //gId:[{type:mongoose.Schema.Types.ObjectId,ref:'productGroup'}]
 
 //var name = productGroup.gName;
@@ -61,3 +62,5 @@ exports.productGroup = productGroup;
 //exports.order = order;
 exports.product = product;
 //exports.productGroup.gName = name;
+exports.customer = customer;
+exports.user = user;

@@ -2,6 +2,8 @@ main_module.factory('registryFactory',function($resource,$http){
 
      var factory = {};
     factory.selected_id = null;
+   // factory.customersArray = [];
+    //factory.usersArray = [];
     //In this array we cache the customers information,
     //so that once stored in array we wont make any further request
     /**factory.friendsArray = [];
@@ -49,7 +51,7 @@ main_module.factory('registryFactory',function($resource,$http){
       *page. When it finds the correct one from the array, it returns
       *that object.
       */
-    factory.getSelectedCustomer = function(){
+    /**factory.getSelectedCustomer = function(){
         
         for(var i = 0; i < factory.customersArray.length; i++){
             
@@ -59,10 +61,10 @@ main_module.factory('registryFactory',function($resource,$http){
             }
         }
         
-    }
+    }**/
     
     //Updates the data to back end
-    factory.insertCustomer = function(data){
+    factory.addRegistry = function(data){
         $http.defaults.headers.common['x-access-token'] = sessionStorage['token'];
         var resource = $resource('/registries',{},{'post':{method:'POST'}});
         return resource.post(data).$promise;

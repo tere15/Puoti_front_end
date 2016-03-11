@@ -65,7 +65,7 @@ app.use('/registries', registry);
 
 
 //This router checks if client is logged in or not
-app.get('/isLogged',function(req,res){
+/**app.get('/isLogged',function(req,res){
     //User is logged in if session contains kayttaja attribute
     console.log("logged info:" + req.session.kayttaja);
     if(req.session.kayttaja){
@@ -75,7 +75,7 @@ app.get('/isLogged',function(req,res){
         
        res.status(401).send([{status:'Unauthorized'}]);  
     }
-});
+});**/
 
 /*https.createServer(options,app).listen(app.get('port') ,app.get('ip'), function() 
 {

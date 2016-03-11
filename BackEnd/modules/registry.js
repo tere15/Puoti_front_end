@@ -1,6 +1,6 @@
 var express = require("express");
-var db = require('./queries');
-var server = require('../server');
+var query = require('./queries');
+//var server = require('../server');
 var router = express.Router();
 
 
@@ -12,12 +12,20 @@ var router = express.Router();
 
 console.log("rregistry.js loaded, router: " + router);
 
-//Handle POST requets for /persons context
+//Handle POST requets for /registries context
 router.post('/',function(req,res){
+   // mysql.addNewFriend(req,res);
+    console.log("hello");
+    query.saveNewCustomer(req,res);
+});
+
+////Handle POST requets for /persons context
+
+//router.post('/',function(req,res){
 /**    mysql.addNewRegistry(req,res);
     //db.saveNewPerson(req,res);
 **/
-});
+//});
 
 
 router.put('/',function(req,res){
