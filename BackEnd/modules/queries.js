@@ -1,4 +1,5 @@
 var db = require('./database');
+var jwt = require('jsonwebtoken');
 var server = require('../server');
 
 /*exports.getGroupName = function(req,res){
@@ -168,31 +169,17 @@ exports.findPersonsByName = function(req,res){
     
 }
 
-exports.registerCustomer = function(req,res){
-    
-    var customer = new db.customer(req.body);
-    
-    console.log("req_body:" + req.body + " res:" + res);
-    customer.save(function(err){
-        
-        if(err){
-            
-            res.status(500).send({status:err.message});
-        }
-        else{
-            res.status(200).send({status:"Ok"});
-        }
-    });
-}
 
-exports.loginFriend = function(req,res){
+
+exports.loginUser = function(req,res){
     
     var searchObject = {
         username:req.body.username,
-        password:req.body.password
+        password:req.body.password,
+        role:req.body.role
     }
 
-    db.Friends.findOne(searchObject,function(err,data){
+    db.user.findOne(searchObject,function(err,data){
         
         if(err){
             
